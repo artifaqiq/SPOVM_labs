@@ -1,0 +1,14 @@
+CC=g++
+CFLAGS=-c -Wall -std=c++11
+
+all: printpidprog
+
+printpidprog:  printpidprog.o
+	$(CC) printpidprog.o -o printpidprog
+
+printpidprog.o: printpidprog.cpp
+	$(CC) $(CFLAGS) printpidprog.cpp
+
+
+clean:
+	rm -rf printpidprog.o printpidprog
