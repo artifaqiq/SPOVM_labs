@@ -73,7 +73,7 @@ int main(int argc, char* argv[])
     sigqueue(getppid(), SIGRTMIN+5, {0});
   }
   return 0;
-#elif _WIN32
+ #elif _WIN32
   if(argc != 2) {
     printf("argc != 2. Error\n");
     return 1;
@@ -115,57 +115,50 @@ int main(int argc, char* argv[])
       exit(-2);
     }
   }
-
-    return 0;
-#endif
+  return 0;
+ #endif
 }
-void printMessage() {
 
-    printf("%c", 'm');
-    printf("%c", 'y');
-    printf("%c", ' ');
-    printf("%c", 'p');
-    printf("%c", 'i');
-    printf("%c", 'd');
-    printf("%c", ' ');
-    printf("%c", '=');
-    printf("%c", ' ');
-#ifdef  __linux__
-    printf("%d", getpid());
-#elif _WIN32
-    printf("%d", GetCurrentProcessId());
-#endif
-    printf("%c", ' ');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '.');
-    printf("%c", '\n');
+void printMessage() 
+{
+  printf("%c", 'm');
+  printf("%c", 'y');
+  printf("%c", ' ');
+  printf("%c", 'p');
+  printf("%c", 'i');
+  printf("%c", 'd');
+  printf("%c", ' ');
+  printf("%c", '=');
+  printf("%c", ' ');
+ #ifdef  __linux__
+  printf("%d", getpid());
+ #elif _WIN32
+  printf("%d", GetCurrentProcessId());
+ #endif
+  printf("%c", ' ');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", ' ');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", ' ');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", ' ');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", '.');
+  printf("%c", '\n');
 }
 
