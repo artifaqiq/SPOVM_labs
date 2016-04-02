@@ -68,7 +68,7 @@ int main(int argc, char* argv[])
     } else {
       printMessage();
     }
-    usleep(100);
+    usleep(100000);
     sigqueue(getppid(), SIGRTMIN+5, {0});
   }
   return 0;
@@ -109,6 +109,7 @@ int main(int argc, char* argv[])
       printf("process [ pid = %d ] started ...\n", GetCurrentProcessId());
     }
     printMessage();
+    Sleep(100);
     if(SetEvent(hManagerEvent) == 0) {
       printf("SetEvent error. last error = %d\n",GetLastError());
       exit(-2);
@@ -120,51 +121,10 @@ int main(int argc, char* argv[])
 
 void printMessage()
 {
-  printf("%c", 'm');
-  printf("%c", 'y');
-  printf("%c", ' ');
-  printf("%c", 'p');
-  printf("%c", 'i');
-  printf("%c", 'd');
-  printf("%c", ' ');
-  printf("%c", '=');
-  printf("%c", ' ');
  #ifdef  __linux__
-  printf("%d", getpid());
+  printf("%s%d%s\n","my pid = ", getpid(), "..........................................................");
  #elif _WIN32
-  printf("%d", GetCurrentProcessId());
+  printf("%s%d%s\n","my pid = ", GetCurrentProcessId(), "..........................................................");
  #endif
-  printf("%c", ' ');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '.');
-  printf("%c", '\n');
 }
 
