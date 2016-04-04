@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_a7ca094e",
+        "filename": "lab2/mainprog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1007640
+      },
+      "writtenOn": "2016-04-04T19:46:08Z",
+      "side": 1,
+      "message": "make define",
+      "range": {
+        "startLine": 65,
+        "startChar": 52,
+        "endLine": 65,
+        "endChar": 67
+      },
+      "revId": "a0e7d82790265e4fc5c8e159bb9a559b73ca5bb8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
