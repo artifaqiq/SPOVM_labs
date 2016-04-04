@@ -1,10 +1,9 @@
 #ifndef PROCESSMANAGER_H
 #define PROCESSMANAGER_H
+
 #include <vector>
 #include "processinfo.h"
-#ifdef _WIN32
-#include <map>
-#endif
+
 class ProcessManager
 {
  private:

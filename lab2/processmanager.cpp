@@ -1,15 +1,16 @@
 #include "processmanager.h"
 #include <iostream>
+
 #ifdef  __linux__
-#include <signal.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <err.h>
+  #include <signal.h>
+  #include <unistd.h>
+  #include <sys/wait.h>
+  #include <err.h>
 #elif _WIN32
-#include <cmath>
+  #include <cmath>
 #endif
 
-ProcessManager::ProcessManager(){}
+ProcessManager::ProcessManager() { }
 
 void ProcessManager::addProcess(std::string pathname)
 {
@@ -27,14 +28,16 @@ void ProcessManager::addProcess(std::string pathname)
   secAttr.nLength = sizeof(SECURITY_ATTRIBUTES);
   secAttr.bInheritHandle = true;
   secAttr.lpSecurityDescriptor = 0;
+  
   char eventName[20];
   sprintf(eventName, "%d", this->countProc()+1);
   char cmdLine[250];
   strcpy (cmdLine, pathname.c_str());
   strcat(cmdLine, " ");
   strcat(cmdLine, eventName);
+  
   HANDLE hEventPrint;
-  if((hEventPrint=CreateEventA(&secAttr, false, false, eventName)) == 0) {
+  if((hEventPrint = CreateEventA(&secAttr, false, false, eventName)) == 0) {
     std::cerr << "Exc. last error = " << GetLastError() << std::endl;
     throw ProcessManager::Exception ("addProcess exception");
   }
@@ -44,7 +47,7 @@ void ProcessManager::addProcess(std::string pathname)
 
   strcat(eventName, "XXX");
   HANDLE hEventTerm;
-  if((hEventTerm=CreateEventA(&secAttr, false, false, eventName)) == 0) {
+  if((hEventTerm = CreateEventA(&secAttr, false, false, eventName)) == 0) {
     std::cerr << "Exc2. last error = " << GetLastError() << std::endl;
     throw ProcessManager::Exception ("addProcess exception");
   }
@@ -126,7 +129,7 @@ void ProcessManager::startManager()
   }
  #ifdef  __linux__
   usleep(20000);
-  if(sigqueue(mPriorityProcess->getPid(), SIGRTMIN+10, {0})<0) {
+  if(sigqueue(mPriorityProcess->getPid(), SIGRTMIN+10, {0}) < 0) {
     std::cerr << "sigqueue error. errno = " << errno << std::endl;
     throw ProcessManager::Exception("sigqueue error");
   }
@@ -144,17 +147,8 @@ void ProcessManager::startManager()
  #endif
 }
 
-bool ProcessManager::isEmpty()
-{
-  return mListProc.empty();
-}
+bool ProcessManager::isEmpty() { return mListProc.empty(); }
 
-ProcessManager::Exception::Exception(std::string info)
-{
-  Exception::info=info;
-}
+ProcessManager::Exception::Exception(std::string info) { Exception::info=info; }
 
-std::string ProcessManager::Exception::getInfo()
-{
-  return Exception::info;
-}
+std::string ProcessManager::Exception::getInfo() { return Exception::info; }

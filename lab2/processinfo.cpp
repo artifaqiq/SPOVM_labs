@@ -1,15 +1,15 @@
 #ifdef  __linux__
-#include <signal.h>
-#include <sys/wait.h>
-#include <unistd.h>
-#include <err.h>
-#include <errno.h>
-#elif _WIN32
+  #include <signal.h>
+  #include <sys/wait.h>
+  #include <unistd.h>
+  #include <err.h>
+  #include <errno.h>
 #endif
+
 #include <iostream>
 #include "processinfo.h"
 
-ProcessInfo::ProcessInfo() {}
+ProcessInfo::ProcessInfo() { }
 
 void ProcessInfo::terminate()
 {
@@ -79,10 +79,10 @@ void ProcessInfo::createAndExec(std::string filename)
     throw ProcessInfo::Exception ("CreateProcess() error");
     }
  #endif
-
 }
 
 #ifdef  __linux__
+
 void ProcessInfo::createAndFunc(void (*handle)())
 {
   pid_t pid;
@@ -101,18 +101,10 @@ void ProcessInfo::createAndFunc(void (*handle)())
   }
 }
 
-void ProcessInfo::sendSignal(int signo)
-{
-  kill(mPid, signo);
-}
+void ProcessInfo::sendSignal(int signo) { kill(mPid, signo); }
+
 #endif
 
-ProcessInfo::Exception::Exception(std::string info)
-{
-  Exception::info = info;
-}
+ProcessInfo::Exception::Exception(std::string info) { Exception::info = info; }
 
-std::string ProcessInfo::Exception::getInfo()
-{
-  return Exception::info;
-}
+std::string ProcessInfo::Exception::getInfo() { return Exception::info; }

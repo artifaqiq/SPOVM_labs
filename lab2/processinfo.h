@@ -1,8 +1,9 @@
 #ifndef PROCESSINFO_H
 #define PROCESSINFO_H
 #include <string>
+
 #ifdef _WIN32
-#include <windows.h>
+  #include <windows.h>
 #endif
 
 class ProcessInfo

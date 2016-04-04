@@ -1,15 +1,22 @@
 #include <stdlib.h>
 #include <stdio.h>
+
 #ifdef  __linux__
-#include <unistd.h>
-#include <signal.h>
-#elif __WIN32
-#include <windows.h>
-#include <iostream>
+
+  #include <unistd.h>
+  #include <signal.h>
+
+#elif _WIN32
+
+  #include <windows.h>
+  #include <iostream>
+
 #endif
+
 void printMessage();
 
 #ifdef  __linux__
+
 void emptyHandle(int signo, siginfo_t* info, void* context){}
 
 void sigTermHandle(int signo, siginfo_t *info, void *context)
@@ -95,7 +102,7 @@ int main(int argc, char* argv[])
     printf("OpenEvent() error. last error = ", GetLastError());
     exit(-1);
   }
-  for(long i=0;;i++) {
+  for(long i = 0;;i++) {
     WaitForSingleObject(hPrintEvent,INFINITE);
     if(WaitForSingleObject(hTermEvent,0) == WAIT_OBJECT_0) {
       if(SetEvent(hManagerEvent) == 0) {
